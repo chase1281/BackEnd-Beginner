@@ -18,7 +18,7 @@ public class UserSaveController{
     public String save(@RequestParam("username") String username,
                      @RequestParam("age") int age
                      ){
-        User user = new User();
+        User user = new User(); // user룰 저장하는 코드는 service 계층에서 따로 구현해라.
         user.setUsername(username);
         user.setAge(age);
 
