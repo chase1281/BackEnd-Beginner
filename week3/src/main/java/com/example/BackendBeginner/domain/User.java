@@ -17,4 +17,5 @@ public class User {
         this.age = age;
         this.username = username;
     }
+    //도메인에서 update를 구현하면 내가 직접 검증할 수 있다.? 따로 메서드를 구현해서 바꿔라 Setter 대신.
 }
