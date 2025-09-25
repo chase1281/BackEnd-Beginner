@@ -20,7 +20,7 @@ public class UserRepository {
     }*/
 
     public User save(User user){
-        user.setUserId(++sequence);
+        user.setUserId(++sequence); // ++sequence는 자바 계산 상 오류가 발생할 수 있어 권장하지 않고, sequence += 1로 하는게 낫다. 증감연산자가 문제
         users.put(user.getUserId(), user);
         return user;
     }
