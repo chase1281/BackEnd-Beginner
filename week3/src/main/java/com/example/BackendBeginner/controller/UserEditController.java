@@ -16,7 +16,7 @@ public class UserEditController{
     }
 
     @GetMapping("/{userId}/edit")
-    public String editForm(@PathVariable("userId") Long userId, Model model){
+    public String editForm(@PathVariable("userId") Long userId, Model model){ //Model로 바로 받지 말고 DTO를 사용해야 한다.
         User user = userRepository.findById(userId);
         model.addAttribute("user", user);
         return "users/editForm";
