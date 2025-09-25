@@ -10,7 +10,7 @@ import java.util.Map;
 @Repository
 public class UserRepository {
     private Map<Long, User> users = new HashMap<>();
-    private static long sequence = 0L;
+    private static long sequence = 0L; //AtomicInteger과 같은 원자성을 부여해서 동시성 문제를 해결해야 한다. 멀티쓰레딩 환경에서
 
     //@Repository가 자동으로 싱글톤 패턴을 구현해줌.
 /*    private static final UserRepository  instance = new UserRepository();
