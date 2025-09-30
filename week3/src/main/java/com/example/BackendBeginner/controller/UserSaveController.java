@@ -1,28 +1,22 @@
 package com.example.BackendBeginner.controller;
 
-import com.example.BackendBeginner.domain.User;
-import com.example.BackendBeginner.domain.UserRepository;
+import com.example.BackendBeginner.controller.dto.UserRequestDTO;
+import com.example.BackendBeginner.controller.dto.UserResponseDTO;
+import com.example.BackendBeginner.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
 public class UserSaveController{
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserSaveController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserSaveController(UserService userService) {
+        this.userService = userService;
     }
 
     @PostMapping("/save")
-    public String save(@RequestParam("username") String username,
-                     @RequestParam("age") int age
-                     ){
-        User user = new User();
-        user.setUsername(username);
-        user.setAge(age);
-
-        userRepository.save(user);
-        return "ok";
+    public UserResponseDTO save(@RequestBody UserRequestDTO dto){
+        return userService.createUser(dto);
     }
 }

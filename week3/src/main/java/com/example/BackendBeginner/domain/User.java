@@ -1,20 +1,25 @@
 package com.example.BackendBeginner.domain;
 
 import lombok.Getter;
-import lombok.Setter;
 
-@Getter @Setter
+@Getter
 public class User {
-    private String username;
     private Long userId;
+    private String username;
     private int age;
 
-    public User(){
+    protected User(){
 
     }
 
-    public User(int age, String username) {
-        this.age = age;
+    public User(Long userId, String username, int age) {
+        this.userId = userId;
         this.username = username;
+        this.age = age;
+    }
+
+    public void update(String username, int age){
+        this.username = username;
+        this.age = age;
     }
 }

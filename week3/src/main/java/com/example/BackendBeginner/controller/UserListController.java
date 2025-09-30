@@ -1,8 +1,7 @@
 package com.example.BackendBeginner.controller;
 
 import com.example.BackendBeginner.controller.dto.UserResponseDTO;
-import com.example.BackendBeginner.domain.User;
-import com.example.BackendBeginner.domain.UserRepository;
+import com.example.BackendBeginner.service.UserService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,22 +13,19 @@ import java.util.List;
 @RequestMapping("/users")
 public class UserListController{
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserListController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserListController(UserService userService) {
+        this.userService = userService;
     }
 
     @GetMapping
     public List<UserResponseDTO> users(){
-        List<User> users = userRepository.findAll();
-        return users.stream()
-                .map(user -> new UserResponseDTO(user.getUserId(), user.getUsername(), user.getAge())).toList();
+        return userService.getAllUser();
     }
 
     @GetMapping("/{userId}")
     public UserResponseDTO user(@PathVariable("userId") Long userId){
-        User findUser = userRepository.findById(userId);
-        return new UserResponseDTO(findUser.getUserId(), findUser.getUsername(), findUser.getAge());
+        return userService.getUser(userId);
     }
 }
