@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
+    //실패나 성공 응답을 하나의 클래스로 구현해 통합하기?
 public class UserSaveController{
 
     private final UserService userService;
