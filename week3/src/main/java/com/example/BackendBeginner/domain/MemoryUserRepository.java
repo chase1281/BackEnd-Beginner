@@ -10,15 +10,9 @@ public class MemoryUserRepository implements UserRepository{
     private Map<Long, User> users = new HashMap<>();
     private static long sequence = 0L;
 
-    //@Repository가 자동으로 싱글톤 패턴을 구현해줌.
-/*    private static final UserRepository  instance = new UserRepository();
-
-    public static UserRepository getInstance(){
-        return instance;
-    }*/
-
     @Override
     public User save(UserRequestDTO dto) {
+        //@Id, @GeneratedValue 등 애노테이션으로 JPA가 자동으로 만들어주고 findById 같은 메서드도 다 포함되어 있다.
         sequence += 1;
         long id = sequence;
         User user = new User(id, dto.username(), dto.age());
