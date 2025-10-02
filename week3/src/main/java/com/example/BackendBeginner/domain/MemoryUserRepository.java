@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 
 @Repository
+//구현체이므로 MemoryUserRepositoryImpl 이런식으로 네이밍 하기
 public class MemoryUserRepository implements UserRepository{
     private Map<Long, User> users = new HashMap<>();
     private static long sequence = 0L;
