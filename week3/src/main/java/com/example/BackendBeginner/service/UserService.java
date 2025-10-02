@@ -22,7 +22,7 @@ public class UserService {
     }  
     
     public UserResponseDTO getUser(Long userId) {
-        User found = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("사용자 없음"));
+        User found = userRepository.findById(userId).orElseThrow(() -> new IllegalArgumentException("사용자 없음")); //@RestControllerAdvice로 예외처리 해주기
         return new UserResponseDTO(found.getUserId(), found.getUsername(), found.getAge());
     }  
     
